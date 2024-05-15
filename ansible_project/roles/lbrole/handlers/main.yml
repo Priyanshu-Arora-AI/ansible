@@ -1,0 +1,7 @@
+---
+# handlers file for lbrole
+    
+    - name: my changes
+      ansible.builtin.service:
+        name: httpd
+        state: restarted

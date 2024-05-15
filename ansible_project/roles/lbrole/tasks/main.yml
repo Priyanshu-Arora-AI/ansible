@@ -1,0 +1,24 @@
+---
+    - name: Install HTTPD Package
+      package:
+        name: httpd
+        state: present
+      # ignore_errors: true
+      # when: xy.rc == 0 #it give error because xy is not register yet  
+      register: xy  
+      
+
+    - debug:
+        var: xy
+    - name: service start
+      ansible.builtin.service:
+        name: httpd
+        state: started
+      when: xy.rc == 0      
+    
+    - name: Template Index File
+      template:
+        src: "{{ index_file }}"
+        dest: /var/www/html/index.html
+      notify: my changes  
+

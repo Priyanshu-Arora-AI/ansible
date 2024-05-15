@@ -1,0 +1,5 @@
+---
+# vars file for lbrole
+name : priyanshu
+template : jinja
+index_file : index.html.j2

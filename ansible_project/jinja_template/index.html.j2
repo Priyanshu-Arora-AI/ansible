@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> my name is {{name}} and i change in file via {{template}} </h1>
+
+    {% if os == "redhat" %}
+        i am from redhat
+
+
+
+    {% endif %}    
+
+    {% for i in [1,2,3,4] %}
+        192.168.1.1
+        192.168.1.{{i}}
+    {% endfor %}
+</body>
+</html>

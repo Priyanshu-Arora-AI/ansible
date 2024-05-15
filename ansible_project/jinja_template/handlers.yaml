@@ -1,0 +1,20 @@
+- hosts: all
+  vars_files:
+    - /root/ansible/jinja_template/variable.yaml
+  tasks: 
+    - name: Install HTTPD Package
+      package:
+        name: httpd
+        state: present
+    
+    - name: Template Index File
+      template:
+        src: "{{ index_file }}"
+        dest: /var/www/html/index.html
+      notify: my changes  
+      
+  handlers:
+    - name: my changes
+      ansible.builtin.service:
+        name: httpd
+        state: restarted

@@ -1,0 +1,71 @@
+- hosts: all
+  # vars:
+  #   server : "httpd"
+  #   pack: 
+  #   - wget
+  #   - vim# - net-toolsmy_dict:
+    #   key1: value1
+    #   key2:value3
+
+
+    # - net-toolsmy_dict:
+    #   key1:
+    #     subkey1: value1
+    #     subkey2: value2
+    #   key2:
+    #     subkey3: value3
+    #     subkey4: value4
+
+
+  # vars_prompt:
+  # - name: z
+  #   prompt : "enter you value"
+  #   private: true
+ #false means that output is  shows on display prompt output 
+ #prompt show message to give prompt  
+  
+  tasks:
+    # - ansible.builtin.package:
+    #     name :
+    #       - "{{item}}"
+    #     state : present
+    #   loop: "{{pack}}"
+    - debug:
+        msg: "IP address of enp0s8 interface: {{ ansible_enp0s8.ipv4.address }}" 
+      when: ansible_memfree_mb > 80 or ansible_os_family == "fedora"
+
+#and and or when used as check condition in every block like in package or any other also      
+      #print the value of z var is used   
+# debug:
+#         msg: "Value of nested_key1: {{ my_dict.key3.nested_key1 }}"
+
+# debug:
+#         msg: "Value of key2 subkey3: {{ my_dict[key].subkey3 }}"
+
+    # - name: Install Package
+    #   ansible.builtin.package:
+    #     name: 
+    #     - "{{server}}"
+    #     - "wget"
+    #     state: present
+    # - debug:
+    #     msg: "value of z is --->>>> '{{z}}"
+      # -debug:
+      #   var: z
+# - command: "mkdir -p /home/test/test1"    
+    # - name: debug Package
+    #   ansible.builtin.debug:
+    #     msg : "hii hii hii "
+
+    # - name: Install Package
+    #   ansible.builtin.package:
+    #     name: 
+    #     - "httpd"
+    #     - "wget"
+    #     state: absent 
+    # - command: "uptime"
+    #   register: output
+    # - debug:
+    #     msg: "load average is --->>> --->>> --->> "  
+    # - debug:
+    #     msg: "{{output}}"    
